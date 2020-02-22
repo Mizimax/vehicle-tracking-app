@@ -1,0 +1,7 @@
+{
+  "name": "vehicle-tracking",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
