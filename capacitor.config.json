@@ -1,8 +1,8 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "vehicle-tracking",
+  "appId": "com.maxang.vehicletracking",
+  "appName": "VehicleTracking",
   "bundledWebRuntime": false,
-  "npmClient": "npm",
+  "npmClient": "yarn",
   "webDir": "build",
   "cordova": {}
 }
