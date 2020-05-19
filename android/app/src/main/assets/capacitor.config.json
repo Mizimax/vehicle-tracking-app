@@ -1,0 +1,8 @@
+{
+  "appId": "com.maxang.vehicletracking",
+  "appName": "VehicleTracking",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "build",
+  "cordova": {}
+}

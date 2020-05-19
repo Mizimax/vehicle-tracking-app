@@ -1,11 +1,7 @@
 import React from 'react';
 import {Redirect, Route} from 'react-router-dom';
-import {IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs} from '@ionic/react';
+import {IonApp} from '@ionic/react';
 import {IonReactRouter} from '@ionic/react-router';
-import {addCircleOutline, homeOutline, searchOutline} from 'ionicons/icons';
-import Home from './pages/Home';
-import Search from './pages/Search';
-import Follow from './pages/Follow';
 import SideMenu from './components/SideMenu';
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -23,38 +19,31 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import './app.css';
+import CameraProvider from "./contexts/CameraContext";
+import VehicleProvider from "./contexts/VehicleContext";
+import Track from "./pages/Track";
+import UserProvider from "./contexts/UserContext";
+import AddVehicle from "./pages/AddVehicle";
+import TabRoot from "./components/TabRoot";
 
 const App: React.FC = () => {
 
-
   return (
-    <IonApp>
-      <IonReactRouter>
-        <SideMenu/>
-        <IonTabs>
-          <IonRouterOutlet id="main">
-            <Route path="/home" component={Home} exact={true}/>
-            <Route path="/search" component={Search} exact={true}/>
-            <Route path="/follow" component={Follow}/>
-            <Route path="/" render={() => <Redirect to="/home"/>} exact={true}/>
-          </IonRouterOutlet>
-          <IonTabBar slot="bottom">
-            <IonTabButton tab="Vehicle Tracking" href="/home">
-              <IonIcon icon={homeOutline}/>
-              <IonLabel>Home</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="Vehicle Searching" href="/search">
-              <IonIcon icon={searchOutline}/>
-              <IonLabel>Search</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="Vehicle Following" href="/follow">
-              <IonIcon icon={addCircleOutline}/>
-              <IonLabel>Follow</IonLabel>
-            </IonTabButton>
-          </IonTabBar>
-        </IonTabs>
-      </IonReactRouter>
-    </IonApp>
+    <IonReactRouter>
+      <IonApp>
+        <UserProvider>
+          <SideMenu/>
+          <VehicleProvider>
+            <CameraProvider>
+              <Route path="/page/track" component={Track}/>
+              <Route path="/page/addvehicle" component={AddVehicle}/>
+              <Route path="/tab" component={TabRoot}/>
+              <Route path="/" render={() => <Redirect to="/tab/Home"/>}/>
+            </CameraProvider>
+          </VehicleProvider>
+        </UserProvider>
+      </IonApp>
+    </IonReactRouter>
   );
 }
 
